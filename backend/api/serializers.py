@@ -18,7 +18,13 @@ class CharacteresticSerializer(serializers.ModelSerializer):
         fields=('id','name')
         
 class CrickerBoardSerializer(serializers.ModelSerializer):
+    league_details=LeagueSerializer(source='league',read_only=True)
+    country_details=CountrySerializer(source='country',read_only=True)
+    characterestics_names=serializers.SerializerMethodField()
+
     class Meta:
         model=CricketBoard
         fields='__all__'
         
+    def get_characterestics_names(self,obj):
+        return [char.name for char in obj.characterestics.all()]

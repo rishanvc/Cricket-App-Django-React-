@@ -80,7 +80,7 @@ const Create = () => {
       .then(()=>{
         setMessge(
           <MyMessage 
-            messageText={"You data is submitted successfully"}
+            messageText={"Data submitted successfully"}
             messagecolor={"green"}
            />
         )
